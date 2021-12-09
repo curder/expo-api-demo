@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('tweets', function () {
+   return \App\Models\Tweet::with('user:id,name,username,avatar')->latest()->get();
+});

@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('tweets', function () {
-   return \App\Models\Tweet::with('user:id,name,username,avatar')->latest()->get();
+   return \App\Models\Tweet::with('user:id,name,username,avatar')->latest()->paginate(10);
 });
